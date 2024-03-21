@@ -130,6 +130,16 @@ message Payload {
 
     // Data, the encoding of which is defined by the type in the header
     bytes data = 2;
+
+    bool redactable = 3;
+
+    bytes redact_message = 4;
+}
+
+message RedactMsg {
+    bytes pk=1;
+    bytes msp=2;
+    bytes fame_cipher=3;
 }
 
 // Envelope wraps a Payload with a signature so that the message may be authenticated

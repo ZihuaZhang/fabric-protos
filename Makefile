@@ -12,7 +12,7 @@ PROJECT := fabric-protos
 # the remote repository directly.
 #
 # Basic authentication is available, see https://buf.build/docs/inputs#https for more details.
-HTTPS_GIT := https://github.com/hyperledger/fabric-protos.git
+HTTPS_GIT := https://github.com/ZihuaZhang/fabric-protos.git
 
 # This controls the remote SSH git location to compare against for breaking changes in CI.
 #
@@ -22,7 +22,7 @@ HTTPS_GIT := https://github.com/hyperledger/fabric-protos.git
 # configuration. We demo this with CircleCI.
 #
 # See https://buf.build/docs/inputs#ssh for more details.
-SSH_GIT := ssh://git@github.com/hyperledger/fabric-protos.git
+SSH_GIT := ssh://git@github.com/ZihuaZhang/fabric-protos.git
 
 # This controls the version of buf to install and use.
 BUF_VERSION := 1.25.1
@@ -88,7 +88,7 @@ ifeq ($(BUF_INSTALL_FROM_SOURCE),true)
 	@rm -rf $(BUF_TMP)
 else
 	curl -sSL \
-		"https://github.com/bufbuild/buf/releases/download/v$(BUF_VERSION)/buf-$(UNAME_OS)-$(UNAME_ARCH)" \
+		"https://521github.com/bufbuild/buf/releases/download/v$(BUF_VERSION)/buf-$(UNAME_OS)-$(UNAME_ARCH)" \
 		-o "$(CACHE_BIN)/buf"
 	chmod +x "$(CACHE_BIN)/buf"
 endif
@@ -105,7 +105,7 @@ $(PROTOC):
 	@mkdir -p $(CACHE_BIN)
 	$(eval PROTOC_TMP := $(shell mktemp -d))
 	curl -sSL \
-		"https://github.com/protocolbuffers/protobuf/releases/download/v$(PROTOC_VERSION)/protoc-$(PROTOC_VERSION)-$(PLATFORM)-$(PROTOC_ARCH).zip" \
+		"https://521github.com/protocolbuffers/protobuf/releases/download/v$(PROTOC_VERSION)/protoc-$(PROTOC_VERSION)-$(PLATFORM)-$(PROTOC_ARCH).zip" \
 		-o "$(PROTOC_TMP)/protoc.zip"
 	unzip -o "$(PROTOC_TMP)/protoc.zip" -d "$(CACHE)" bin/protoc
 	unzip -o "$(PROTOC_TMP)/protoc.zip" -d "$(CACHE)" include/*
@@ -181,7 +181,7 @@ $(PROTOC_GEN_JS):
 	@mkdir -p $(CACHE_BIN)
 	$(eval PROTOC_GEN_JS_TMP := $(shell mktemp -d))
 	curl -sSL \
-		"https://github.com/protocolbuffers/protobuf-javascript/releases/download/v$(PROTOC_GEN_JS_VERSION)/protobuf-javascript-$(PROTOC_GEN_JS_VERSION)-$(PLATFORM)-$(PROTOC_ARCH).tar.gz" \
+		"https://521github.com/protocolbuffers/protobuf-javascript/releases/download/v$(PROTOC_GEN_JS_VERSION)/protobuf-javascript-$(PROTOC_GEN_JS_VERSION)-$(PLATFORM)-$(PROTOC_ARCH).tar.gz" \
 		-o "$(PROTOC_GEN_JS_TMP)/protobuf-javascript.tar.gz"
 	tar xf "$(PROTOC_GEN_JS_TMP)/protobuf-javascript.tar.gz" -C "$(PROTOC_GEN_JS_TMP)" bin/protoc-gen-js
 	mv "$(PROTOC_GEN_JS_TMP)/bin/protoc-gen-js" "$(CACHE_BIN)"
